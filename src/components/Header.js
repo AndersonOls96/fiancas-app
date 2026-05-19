@@ -15,7 +15,6 @@ export default function Header({ name }) {
             </View>
         </View>
     )
-
 }
 
 const styles = StyleSheet.create({
