@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Stack, router, useSegments } from 'expo-router'
 import { ActivityIndicator, View } from 'react-native'
-import { useAuth } from '../src/context/AuthContext'
+import { AuthProvider, useAuth } from '../src/context/AuthContext'
 
 
-export default function RootLayout() {
+function InitialLayout() {
     const { user, loading } = useAuth();
     const segments = useSegments();
 
@@ -31,4 +31,12 @@ export default function RootLayout() {
 
     return <Stack screenOptions={{ headerShown: false }}/>
 
+}
+
+export default function RootLayout(){
+    return(
+        <AuthProvider>
+            <InitialLayout />
+        </AuthProvider>
+    )
 }
