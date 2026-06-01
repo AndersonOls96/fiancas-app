@@ -6,12 +6,12 @@ export default function Movements({ data }){
 
     return(
         <TouchableOpacity style={styles.container} onPress={()=> setShowValue(prev => !prev)}>
-            <Text style={styles.date}>{data.date}</Text>
+            <Text style={styles.date}>{data.date?.toDate  ? data.date.toDate().toLocaleDateString('pt-BR') : ''}</Text>
             <View style={styles.content}>
                 <Text style={styles.label}>{data.label}</Text>
                 {showValue ?(
-                    <Text style={data.type === 1 ? styles.value : styles.expenses}>
-                        {data.type === 1 ? `R$ ${data.value}` : `R$ -${data.value}`}
+                    <Text style={data.type === 'receita' ? styles.value : styles.expenses}>
+                        {data.type === 'receita' ? `R$ ${data.value}` : `R$ -${data.value}`}
                     </Text>
                 ):(
                     <View style={styles.skeleton}/>
